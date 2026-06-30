@@ -11,10 +11,38 @@
 </head>
 
 <body>
-    random password genreator
-    <div id="text">...</div>
-    <button class="btn btn-neutral btn-outline" id="copy">copy</button>
-    <button class="btn btn-neutral btn-outline" id="generate">genreator</button>
+
+    <div class="parent">
+        <div class="div1">
+            <h1>Your Balance</h1>
+            <span id="total">0</span>
+        </div>
+
+        <div class="div2">
+            <h1>income</h1>
+            <span id="income">0</span>
+        </div>
+
+        <div class="div3">
+            <h1>expense</h1>
+            <span id="expense">0</span>
+        </div>
+        
+        <div class="div4" style="overflow-y: scroll">
+            <h1>transaction</h1>
+            <span id="transaction">0</span>
+        </div>
+
+        <div class="div5">
+            <h1>add transaction</h1>
+            <h1>desc</h1>
+            <input type="text" placeholder="Primary" class="input input-primary" id="desc"/>
+            <h1>amt</h1>
+            <input type="text" placeholder="Primary" class="input input-primary" id="amt"/>
+            <button class="btn btn-primary" id="add-btn">Primary</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 

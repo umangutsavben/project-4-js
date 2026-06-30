@@ -1,28 +1,36 @@
-const copy_btn = document.getElementById("copy");
-const generate = document.getElementById("generate");
-const pass = document.getElementById("text");
+const total = document.getElementById("total");
+const income = document.getElementById("income");
+const expense = document.getElementById("expense");
+const transaction = document.getElementById("transaction");
 
-copy_btn.addEventListener("click",copied);
-generate.addEventListener("click",generated);
+const descInput = document.getElementById("desc");
+const amountInput = document.getElementById("amt");
 
-async function copied(){
-    if(pass.innerText==="...") return;
+const addButton = document.getElementById("add-btn");
 
-    //let copied_pass = pass.innerText;
-    await navigator.clipboard.writeText(pass.textContent);
-    alert("copied the password generated")
-}
-// xgtuyRjjsR0ZWrM1ZdvCAbokrm4wYnaqoYUzAN87
-async function generated() {
-
-    const url = "https://api.api-ninjas.com/v1/passwordgenerator?length=16";
-    const resp = await fetch(url,{
-        
-        headers : {
-            "X-Api-Key":"xgtuyRjjsR0ZWrM1ZdvCAbokrm4wYnaqoYUzAN87"
-        }
-    })
-
-    const obj = await resp.json();
-    pass.innerText = obj.random_password;
-}
+addButton.addEventListener("click", () => {
+    let name = descInput.value;
+    let amount = amountInput.value;
+    if (name === "" || amount === "") return;
+    let num = Number(amount);
+    const box = document.createElement("div");
+    box.innerText = name + " : ₹" + amount;
+    transaction.appendChild(box);
+    let total_amt = parseInt(total.innerText);
+    if (num >= 0) {
+        let income_amt = parseInt(income.innerText);
+        income_amt = income_amt + num;
+        income.innerText = income_amt.toString();
+        total_amt = total_amt + num;
+        total.innerText = total_amt.toString();
+    }
+    else {
+        let expense_amt = parseInt(expense.innerText);
+        expense_amt = expense_amt + num;
+        expense.innerText = expense_amt.toString();
+        total_amt = total_amt + num;
+        total.innerText = total_amt.toString();
+    }
+    descInput.value = "";
+    amountInput.value = "";
+})
