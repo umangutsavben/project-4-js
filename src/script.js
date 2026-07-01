@@ -57,7 +57,7 @@ function toggle(event){
         return todo;
     })
     saveTodo();
-    render();
+    render();    // done
 }
 function deleteTodo(event){
     const id = Number(event.target.dataset.id);
