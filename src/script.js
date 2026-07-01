@@ -1,36 +1,76 @@
-const total = document.getElementById("total");
-const income = document.getElementById("income");
-const expense = document.getElementById("expense");
-const transaction = document.getElementById("transaction");
+const button = document.getElementById("add-btn");
+const input = document.getElementById("txt");
+const box = document.getElementById("container");
 
-const descInput = document.getElementById("desc");
-const amountInput = document.getElementById("amt");
+button.addEventListener("click",addTodo);
 
-const addButton = document.getElementById("add-btn");
+let todos = [];
 
-addButton.addEventListener("click", () => {
-    let name = descInput.value;
-    let amount = amountInput.value;
-    if (name === "" || amount === "") return;
-    let num = Number(amount);
-    const box = document.createElement("div");
-    box.innerText = name + " : ₹" + amount;
-    transaction.appendChild(box);
-    let total_amt = parseInt(total.innerText);
-    if (num >= 0) {
-        let income_amt = parseInt(income.innerText);
-        income_amt = income_amt + num;
-        income.innerText = income_amt.toString();
-        total_amt = total_amt + num;
-        total.innerText = total_amt.toString();
+function addTodo(){
+    if(input.value.trim() === "") return;
+    const todo = {
+        id:Date.now(),
+        data: input.value,
+        flag:false
     }
-    else {
-        let expense_amt = parseInt(expense.innerText);
-        expense_amt = expense_amt + num;
-        expense.innerText = expense_amt.toString();
-        total_amt = total_amt + num;
-        total.innerText = total_amt.toString();
-    }
-    descInput.value = "";
-    amountInput.value = "";
-})
+    todos.push(todo);
+    saveTodo();
+    render();
+    input.value = "";
+}
+
+function saveTodo(){
+    localStorage.setItem("todos",JSON.stringify(todos));
+}
+
+function render(){
+    box.innerHTML = "";
+    todos = JSON.parse(localStorage.getItem("todos")) || [];
+    //todos = todos.filter()
+    todos.forEach((todo) => {
+        
+        const div = document.createElement("div");
+        const span = document.createElement("span");
+        const btn = document.createElement("button");
+        span.innerText = todo.data;
+        btn.innerText = "delete";
+        div.style.display = "flex";
+        div.style.justifyContent = "space-evenly"
+        btn.classList.add("butt");
+        if(todo.flag === true) {
+            span.style.textDecoration = "line-through";
+        }
+        span.dataset.id = todo.id;
+        btn.dataset.id = todo.id;
+        span.addEventListener("click",toggle);
+        btn.addEventListener("click",deleteTodo);
+        div.append(span,btn);
+        box.appendChild(div);
+    })
+}
+function toggle(event){
+    const id = Number(event.target.dataset.id);
+    todos = todos.map((todo) =>{
+        if(todo.id === id){
+            todo.flag = !todo.flag;
+        }
+        return todo;
+    })
+    saveTodo();
+    render();
+}
+function deleteTodo(event){
+    const id = Number(event.target.dataset.id);
+    todos = todos.filter(todo => todo.id !== id);
+    saveTodo();
+    render();
+}
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    todos = JSON.parse(localStorage.getItem("todos")) || [];
+    render();
+});

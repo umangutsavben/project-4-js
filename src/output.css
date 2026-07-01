@@ -1,4 +1,4 @@
-/*! tailwindcss v4.3.1 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.3.2 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -6,9 +6,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-black: #000;
-    --spacing: 0.25rem;
-    --radius-4xl: 2rem;
+    --color-white: #fff;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -473,56 +471,6 @@
       }
     }
   }
-  .progress {
-    @layer daisyui.l1.l2.l3 {
-      position: relative;
-      height: calc(0.25rem * 2);
-      width: 100%;
-      appearance: none;
-      overflow: hidden;
-      border-radius: var(--radius-box);
-      background-color: currentcolor;
-      @supports (color: color-mix(in lab, red, red)) {
-        background-color: color-mix(in oklab, currentcolor 20%, transparent);
-      }
-      color: var(--color-base-content);
-      &:indeterminate {
-        background-image: repeating-linear-gradient( 90deg, currentColor -1%, currentColor 10%, #0000 10%, #0000 90% );
-        background-size: 200%;
-        background-position-x: 15%;
-        @media (prefers-reduced-motion: no-preference) {
-          animation: progress 5s ease-in-out infinite;
-        }
-        @supports (-moz-appearance: none) {
-          &::-moz-progress-bar {
-            background-color: transparent;
-            @media (prefers-reduced-motion: no-preference) {
-              animation: progress 5s ease-in-out infinite;
-              background-image: repeating-linear-gradient( 90deg, currentColor -1%, currentColor 10%, #0000 10%, #0000 90% );
-              background-size: 200%;
-              background-position-x: 15%;
-            }
-          }
-        }
-      }
-      @supports (-moz-appearance: none) {
-        &::-moz-progress-bar {
-          border-radius: var(--radius-box);
-          background-color: currentcolor;
-        }
-      }
-      @supports (-webkit-appearance: none) {
-        &::-webkit-progress-bar {
-          border-radius: var(--radius-box);
-          background-color: transparent;
-        }
-        &::-webkit-progress-value {
-          border-radius: var(--radius-box);
-          background-color: currentColor;
-        }
-      }
-    }
-  }
   .container {
     width: 100%;
     @media (width >= 40rem) {
@@ -541,47 +489,35 @@
       max-width: 96rem;
     }
   }
-  .mt-2 {
-    margin-top: calc(var(--spacing) * 2);
-  }
-  .ml-3 {
-    margin-left: calc(var(--spacing) * 3);
-  }
-  .ml-30 {
-    margin-left: calc(var(--spacing) * 30);
-  }
   .flex {
     display: flex;
-  }
-  .h-150 {
-    height: calc(var(--spacing) * 150);
   }
   .h-screen {
     height: 100vh;
   }
-  .w-1\/4 {
-    width: calc(1 / 4 * 100%);
+  .w-1\/2 {
+    width: calc(1 / 2 * 100%);
   }
-  .w-full {
-    width: 100%;
+  .w-screen {
+    width: 100vw;
   }
-  .flex-row {
-    flex-direction: row;
+  .flex-col {
+    flex-direction: column;
   }
   .items-center {
     align-items: center;
   }
-  .justify-evenly {
-    justify-content: space-evenly;
+  .justify-center {
+    justify-content: center;
   }
-  .rounded-4xl {
-    border-radius: var(--radius-4xl);
+  .bg-\[\#22223b\] {
+    background-color: #22223b;
   }
-  .bg-\[\#f2e9e4\] {
-    background-color: #f2e9e4;
+  .bg-white {
+    background-color: var(--color-white);
   }
-  .bg-black {
-    background-color: var(--color-black);
+  .line-through {
+    text-decoration-line: line-through;
   }
   .btn-primary {
     @layer daisyui.l1.l2 {
@@ -592,13 +528,28 @@
   }
 }
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  color: 9a8c98;
 }
-#card {
-  background-color: #4a4e69;
-  height: 20px;
-  width: 100px;
+.butt {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.butt:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+.butt:active {
+  transform: scale(0.97);
 }
 @layer base {
   :where(:root),:root:has(input.theme-controller[value=light]:checked),[data-theme=light] {

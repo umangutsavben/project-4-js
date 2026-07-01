@@ -7,41 +7,26 @@
     <title>Quiz Game</title>
     <link rel="stylesheet" href="input.css" />
     <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
 <body>
 
-    <div class="parent">
-        <div class="div1">
-            <h1>Your Balance</h1>
-            <span id="total">0</span>
+    <div class="flex justify-center items-center bg-[#22223b] h-screen w-screen">
+        <div class="bg-white w-1/2" >
+            <h1 style="color: black;">TODO LIST</h1>
+            <input type="text" style="color: white;" placeholder="Primary" class="input input-soft" id="txt"/>
+            <button class="btn btn-primary" id="add-btn">add todo</button>
+            <div class="flex-col" id="container" style="color: black">
+                
+            </div>
         </div>
 
-        <div class="div2">
-            <h1>income</h1>
-            <span id="income">0</span>
-        </div>
-
-        <div class="div3">
-            <h1>expense</h1>
-            <span id="expense">0</span>
-        </div>
-        
-        <div class="div4" style="overflow-y: scroll">
-            <h1>transaction</h1>
-            <span id="transaction">0</span>
-        </div>
-
-        <div class="div5">
-            <h1>add transaction</h1>
-            <h1>desc</h1>
-            <input type="text" placeholder="Primary" class="input input-primary" id="desc"/>
-            <h1>amt</h1>
-            <input type="text" placeholder="Primary" class="input input-primary" id="amt"/>
-            <button class="btn btn-primary" id="add-btn">Primary</button>
-        </div>
     </div>
+
 
     <script src="script.js"></script>
 </body>

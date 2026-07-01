@@ -1,39 +1,31 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-*{
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
 }
 
-
-.parent {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    gap: 8px;
-}
-    
-.div1 {
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2;
-}
-
-.div2 {
-    grid-row-start: 3;
+.butt {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.div3 {
-    grid-row-start: 3;
+.butt:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
-.div4 {
-    grid-row: span 6 / span 6;
-    grid-row-start: 4;
+.butt:active {
+    transform: scale(0.97);
 }
-
-.div5 {
-    grid-row: span 6 / span 6;
-    grid-row-start: 4;
-}
-        
-
